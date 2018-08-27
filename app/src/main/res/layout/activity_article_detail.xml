@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".controller.ArticleDetailActivity">
+
+    <ImageView
+        android:id="@+id/article_image"
+        android:layout_width="match_parent"
+        android:layout_height="256dp" />
+
+    <TextView
+        android:id="@+id/article_author"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Author"/>
+
+    <TextView
+        android:id="@+id/article_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Title"/>
+
+    <TextView
+        android:id="@+id/article_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Description"/>
+
+    <TextView
+        android:id="@+id/article_publish_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Publish Date"/>
+
+    <TextView
+        android:id="@+id/article_link"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/colorAccent"
+        android:text="Article Link"/>
+
+</LinearLayout>
