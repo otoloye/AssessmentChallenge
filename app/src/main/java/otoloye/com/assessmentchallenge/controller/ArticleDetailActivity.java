@@ -2,10 +2,15 @@ package otoloye.com.assessmentchallenge.controller;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.util.Linkify;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -41,7 +46,7 @@ public class ArticleDetailActivity extends AppCompatActivity {
 
     @Inject
     Picasso picasso;
-    String article_link;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,22 +62,15 @@ public class ArticleDetailActivity extends AppCompatActivity {
         String article_title = getIntent().getExtras().getString("article_title");
         String article_description = getIntent().getExtras().getString("article_description");
         String article_publish_date = getIntent().getExtras().getString("article_publish_date");
-        article_link = getIntent().getExtras().getString("article_url");
+        String article_link = getIntent().getExtras().getString("article_url");
 
         articleAuthor.setText(article_author);
         articleTitle.setText(article_title);
         articleDescription.setText(article_description);
         articlePublishDate.setText(article_publish_date);
+
         articleLink.setText(article_link);
-
-        articleLink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                WebView webView = new WebView(ArticleDetailActivity.this);
-                        webView.loadUrl(article_link);
-            }
-        });
-
+        Linkify.addLinks(articleLink, Linkify.WEB_URLS);
 
         picasso.load(article_image).into(articleImage);
     }
