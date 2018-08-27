@@ -1,10 +1,12 @@
 package otoloye.com.assessmentchallenge.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Article {
+public class Article implements Parcelable{
 
     @SerializedName("author")
     private String author;
@@ -33,6 +35,42 @@ public class Article {
         this.publishedAt = publishedAt;
         this.url = url;
     }
+
+    protected Article(Parcel in) {
+        author = in.readString();
+        title = in.readString();
+        urlToImage = in.readString();
+        description = in.readString();
+        url = in.readString();
+        publishedAt = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(author);
+        dest.writeString(title);
+        dest.writeString(urlToImage);
+        dest.writeString(description);
+        dest.writeString(url);
+        dest.writeString(publishedAt);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Article> CREATOR = new Creator<Article>() {
+        @Override
+        public Article createFromParcel(Parcel in) {
+            return new Article(in);
+        }
+
+        @Override
+        public Article[] newArray(int size) {
+            return new Article[size];
+        }
+    };
 
     public String getAuthor() {
         return author;

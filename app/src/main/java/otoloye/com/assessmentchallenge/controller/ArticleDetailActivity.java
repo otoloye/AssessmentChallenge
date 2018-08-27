@@ -14,12 +14,20 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
+
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import otoloye.com.assessmentchallenge.MyApp;
 import otoloye.com.assessmentchallenge.R;
+import otoloye.com.assessmentchallenge.model.Article;
 
 public class ArticleDetailActivity extends AppCompatActivity {
 
@@ -50,25 +58,32 @@ public class ArticleDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_article_detail);
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle("Details Activity");
+        getSupportActionBar().setTitle("Article Details Activity");
         ((MyApp) getApplication()).getAppComponent().inject(this);
         ButterKnife.bind(this);
 
-        String article_image = getIntent().getExtras().getString("article_image");
-        String article_author = getIntent().getExtras().getString("article_author");
-        String article_title = getIntent().getExtras().getString("article_title");
-        String article_description = getIntent().getExtras().getString("article_description");
-        String article_publish_date = getIntent().getExtras().getString("article_publish_date");
-        String article_link = getIntent().getExtras().getString("article_url");
+        Article article = getIntent().getParcelableExtra("article");
 
-        articleAuthor.setText("Author: " + article_author);
-        articleTitle.setText("Title: " + article_title);
-        articleDescription.setText("Description: " + article_description);
-        articlePublishDate.setText("Publish Date: " + article_publish_date);
+        articleAuthor.setText("Author: " + article.getAuthor());
+        articleTitle.setText("Title: " + article.getTitle());
+        articleDescription.setText("Description: " + article.getDescription());
 
-        articleLink.setText("Link: " + article_link);
+
+        SimpleDateFormat simpleDateFormat;
+        simpleDateFormat = new SimpleDateFormat();
+        simpleDateFormat.applyPattern("yyyy-MM-dd'T'HH:mm:ss'Z'");
+        simpleDateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
+        Date date = null;
+        try {
+            date = simpleDateFormat.parse(article.getPublishedAt());
+            simpleDateFormat.applyPattern("EEE, MMM d, ''yy");
+            articlePublishDate.setText(simpleDateFormat.format(date));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        articleLink.setText("Link: " + article.getUrl());
         Linkify.addLinks(articleLink, Linkify.WEB_URLS);
 
-        picasso.load(article_image).into(articleImage);
+        picasso.load(article.getUrlToImage()).into(articleImage);
     }
 }

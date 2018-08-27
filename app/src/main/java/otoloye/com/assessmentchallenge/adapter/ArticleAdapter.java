@@ -70,12 +70,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
                     if (pos != RecyclerView.NO_POSITION) {
                         Article clickDataItem = articles.get(pos);
                         Intent intent = new Intent(context, ArticleDetailActivity.class);
-                        intent.putExtra("article_image", clickDataItem.getUrlToImage());
-                        intent.putExtra("article_title", clickDataItem.getTitle());
-                        intent.putExtra("article_author", clickDataItem.getAuthor());
-                        intent.putExtra("article_description", clickDataItem.getDescription());
-                        intent.putExtra("article_url", clickDataItem.getUrl());
-                        intent.putExtra("article_publish_date", clickDataItem.getPublishedAt());
+                        intent.putExtra("article", clickDataItem);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         context.startActivity(intent);
                     }
