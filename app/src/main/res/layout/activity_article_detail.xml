@@ -10,38 +10,49 @@
     <ImageView
         android:id="@+id/article_image"
         android:layout_width="match_parent"
-        android:layout_height="256dp" />
+        android:layout_height="256dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp" />
 
     <TextView
         android:id="@+id/article_author"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Author"/>
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Author" />
 
     <TextView
         android:id="@+id/article_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Title"/>
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Title" />
 
     <TextView
         android:id="@+id/article_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Description"/>
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Description" />
 
     <TextView
         android:id="@+id/article_publish_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Publish Date"/>
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Publish Date" />
 
     <TextView
         android:id="@+id/article_link"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
-        android:textColor="@color/colorAccent"
-        android:text="Article Link"/>
+        android:text="Article Link"
+        android:textColor="@color/colorAccent" />
 
 </LinearLayout>

@@ -41,9 +41,6 @@ public class ArticleDetailActivity extends AppCompatActivity {
     @BindView(R.id.article_link)
     TextView articleLink;
 
-//    @BindView(R.id.webview)
-//    WebView webView;
-
     @Inject
     Picasso picasso;
 
@@ -64,12 +61,12 @@ public class ArticleDetailActivity extends AppCompatActivity {
         String article_publish_date = getIntent().getExtras().getString("article_publish_date");
         String article_link = getIntent().getExtras().getString("article_url");
 
-        articleAuthor.setText(article_author);
-        articleTitle.setText(article_title);
-        articleDescription.setText(article_description);
-        articlePublishDate.setText(article_publish_date);
+        articleAuthor.setText("Author: " + article_author);
+        articleTitle.setText("Title: " + article_title);
+        articleDescription.setText("Description: " + article_description);
+        articlePublishDate.setText("Publish Date: " + article_publish_date);
 
-        articleLink.setText(article_link);
+        articleLink.setText("Link: " + article_link);
         Linkify.addLinks(articleLink, Linkify.WEB_URLS);
 
         picasso.load(article_image).into(articleImage);
