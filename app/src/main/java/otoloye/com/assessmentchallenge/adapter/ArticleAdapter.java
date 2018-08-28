@@ -14,6 +14,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import otoloye.com.assessmentchallenge.R;
 import otoloye.com.assessmentchallenge.controller.ArticleDetailActivity;
 import otoloye.com.assessmentchallenge.model.Article;
@@ -53,15 +55,17 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
+
+        @BindView(R.id.article_image)
         ImageView articleImage;
+        @BindView(R.id.article_author)
         TextView articleAuthor;
+        @BindView(R.id.article_title)
         TextView articleTitle;
 
         ViewHolder(final View itemView) {
             super(itemView);
-            articleImage = itemView.findViewById(R.id.article_image);
-            articleAuthor = itemView.findViewById(R.id.article_author);
-            articleTitle = itemView.findViewById(R.id.article_title);
+            ButterKnife.bind(this, itemView);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
