@@ -1,18 +1,16 @@
 package otoloye.com.assessmentchallenge.model;
 
-import com.google.gson.annotations.SerializedName;
-
 import java.util.List;
 
 public class ArticleResponse {
 
     private List<Article> articles;
 
-    public List<Article> getItems() {
+    public List<Article> getArticles() {
         return articles;
     }
 
-    public void setItems(List<Article> items) {
-        this.articles = items;
+    public void setArticles(List<Article> articles) {
+        this.articles = articles;
     }
 }

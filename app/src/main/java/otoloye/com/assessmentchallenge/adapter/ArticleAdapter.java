@@ -71,7 +71,6 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
                         Article clickDataItem = articles.get(pos);
                         Intent intent = new Intent(context, ArticleDetailActivity.class);
                         intent.putExtra("article", clickDataItem);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         context.startActivity(intent);
                     }
                 }

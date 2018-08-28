@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
@@ -81,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
         call.enqueue(new Callback<ArticleResponse>() {
             @Override
             public void onResponse(Call<ArticleResponse> call, Response<ArticleResponse> response) {
-                articles = response.body().getItems();
+                articles = response.body().getArticles();
                 articleAdapter = new ArticleAdapter(getApplicationContext(), articles, picasso);
                 recyclerView.setAdapter(articleAdapter);
                 swipeRefresh.setRefreshing(false);

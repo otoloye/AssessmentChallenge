@@ -64,26 +64,23 @@ public class ArticleDetailActivity extends AppCompatActivity {
 
         Article article = getIntent().getParcelableExtra("article");
 
-        articleAuthor.setText("Author: " + article.getAuthor());
-        articleTitle.setText("Title: " + article.getTitle());
-        articleDescription.setText("Description: " + article.getDescription());
-
-
-        SimpleDateFormat simpleDateFormat;
-        simpleDateFormat = new SimpleDateFormat();
-        simpleDateFormat.applyPattern("yyyy-MM-dd'T'HH:mm:ss'Z'");
-        simpleDateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
-        Date date = null;
-        try {
-            date = simpleDateFormat.parse(article.getPublishedAt());
-            simpleDateFormat.applyPattern("EEE, MMM d, ''yy");
-            articlePublishDate.setText(simpleDateFormat.format(date));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        articleLink.setText("Link: " + article.getUrl());
+        articleAuthor.setText(getString(R.string.author) + article.getAuthor());
+        articleTitle.setText(getString(R.string.title) + article.getTitle());
+        articleDescription.setText(getString(R.string.desc) + article.getDescription());
+        articleLink.setText(getString(R.string.link) + article.getUrl());
         Linkify.addLinks(articleLink, Linkify.WEB_URLS);
 
         picasso.load(article.getUrlToImage()).into(articleImage);
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat();
+        simpleDateFormat.applyPattern("yyyy-MM-dd'T'HH:mm:ss'Z'");
+        simpleDateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
+        try {
+            Date date = simpleDateFormat.parse(article.getPublishedAt());
+            simpleDateFormat.applyPattern("EEE, MMM d, ''yy");
+            articlePublishDate.setText(getString(R.string.date) + simpleDateFormat.format(date));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 }
